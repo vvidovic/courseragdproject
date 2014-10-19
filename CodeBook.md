@@ -1,6 +1,8 @@
 Feature Selection 
 =================
 
+## Basic input data description
+
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
@@ -57,3 +59,12 @@ Additional vectors obtained by averaging the signals in a signal window sample. 
 * tBodyGyroJerkMean
 
 The complete list of variables of each feature vector is available in 'features.txt' in Samsung data.
+
+## Applied transformations description
+Following transformations were applied to Samsung data set:
+* test and train data are merged into one data set
+* activity names and subject ids are added into merged data set
+* all features except standard deviation and mean were descarded
+* resulted data were agregated by activity and subject to calculate average of each variable
+
+
