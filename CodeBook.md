@@ -12,6 +12,8 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
+All acceleration variables use standard gravity units 'G' and all gyroscopic variables use radians/seconds units. Both groups of variables are easily distinguished by "Acc" or "Gyro" contained in their names.
+
 * tBodyAcc-XYZ
 * tGravityAcc-XYZ
 * tBodyAccJerk-XYZ
@@ -66,5 +68,5 @@ Following transformations were applied to Samsung data set:
 * activity names and subject ids are added into merged data set
 * all features except standard deviation and mean were descarded
 * resulted data were agregated by activity and subject to calculate average of each variable
-
+* variable names (except of activity_name and subject_id) were were cleaned from parenthesis and suffix "-avg" was added to them to clear that values were aggregated average values
 

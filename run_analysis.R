@@ -24,12 +24,14 @@ if(!exists("df_feature_names")) {
 # Merges the training and the test sets to create one data set.
 df_data <- rbind(df_test_data, df_train_data)
 # Appropriately labels the data set with descriptive variable names.
-colnames(df_data) <- df_feature_names$V2
+feature_names <- gsub("\\(|\\)","",df_feature_names$V2)
+feature_names <- sub("$", "-avg", feature_names)
+colnames(df_data) <- feature_names
 df_activity_ids <- rbind(df_test_activities, df_train_activities)
 df_subjects <- rbind(df_test_subjects, df_train_subjects)
 
 # Extracts only the measurements on the mean and standard deviation for each measurement.
-df_stdmean <- df_data[,grep("std|mean", df_feature_names$V2)]
+df_stdmean <- df_data[,grep("std|mean", feature_names)]
 
 # Uses descriptive activity names to name the activities in the data set
 df_activities <- merge(df_activity_ids, df_activity_names, sort=FALSE)
