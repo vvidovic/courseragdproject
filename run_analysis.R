@@ -40,10 +40,8 @@ df_stdmean <- cbind(df_stdmean, df_subjects)
 # Uses descriptive activity names to name the activities in the data set
 colnames(df_activity_ids) <- c("activity_id")
 colnames(df_activity_names) <- c("activity_id", "activity_name")
-df_stdmean <- cbind(df_stdmean, activity_id = df_activity_ids$activity_id)
-# merge changes row ordering
-df_stdmean <- merge(df_stdmean, df_activity_names)
-df_stdmean <- df_stdmean[,2:82]
+df_activities <- left_join(df_activity_ids, df_activity_names)
+df_stdmean <- cbind(df_stdmean, activity_name = df_activities$activity_name)
 
 
 # Creates a second, independent tidy data set with the average of each variable
