@@ -33,14 +33,18 @@ df_subjects <- rbind(df_test_subjects, df_train_subjects)
 # Extracts only the measurements on the mean and standard deviation for each measurement.
 df_stdmean <- df_data[,grep("std|mean", feature_names)]
 
-# Uses descriptive activity names to name the activities in the data set
-df_activities <- merge(df_activity_ids, df_activity_names, sort=FALSE)
-colnames(df_activities) <- c("actvity_id", "activity_name")
-df_stdmean <- cbind(df_stdmean, activity_name = df_activities$activity_name)
-
 # Add subject id-s to data frame.
 colnames(df_subjects) <- c("subject_id")
 df_stdmean <- cbind(df_stdmean, df_subjects)
+
+# Uses descriptive activity names to name the activities in the data set
+colnames(df_activity_ids) <- c("activity_id")
+colnames(df_activity_names) <- c("activity_id", "activity_name")
+df_stdmean <- cbind(df_stdmean, activity_id = df_activity_ids$activity_id)
+# merge changes row ordering
+df_stdmean <- merge(df_stdmean, df_activity_names)
+df_stdmean <- df_stdmean[,2:82]
+
 
 # Creates a second, independent tidy data set with the average of each variable
 # for each activity and each subject.
